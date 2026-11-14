@@ -1,274 +1,187 @@
-[13.11.2026 20:38] ?????: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sneakers Tycoon</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#101116">
+<title>SNEAKERS TYCOON</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root{
+  --bg:#101116;--panel:#191a22;--panel2:#20212b;--line:#2b2d39;
+  --text:#f4f4f7;--muted:#9295a4;--purple:#9b69ed;--purple2:#7448c7;
+  --green:#b8e879;--gold:#e9c778;--radius:19px;
 }
-
-body {
-    background: #101014;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 18px;
-    padding-bottom: 100px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar {
-    width: 48px;
-    height: 48px;
-    background: #292333;
-    border: 2px solid #a855f7;
-    border-radius: 15px;
-    display: grid;
-    place-items: center;
-    font-size: 25px;
-}
-
-.level {
-    color: #b9a1d5;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.money {
-    background: #202027;
-    padding: 12px;
-    border-radius: 12px;
-    color: #baff61;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 25px;
-    margin-bottom: 6px;
-}
-
-.subtitle {
-    color: #9995a5;
-    font-size: 13px;
-    margin-bottom: 22px;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 22px;
-}
-
-.stat {
-    background: #1c1b23;
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px solid #302b3a;
-}
-
-.stat small {
-    color: #9995a5;
-}
-
-.stat h2 {
-    margin-top: 8px;
-    font-size: 21px;
-}
-
-.shop {
-    background: linear-gradient(135deg, #42216b, #211b36);
-    border: 1px solid #7540a8;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 22px;
-}
-
-.shop h2 {
-    font-size: 21px;
-    margin-bottom: 8px;
-}
-
-.shop p {
-    color: #d1c3e1;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.shop button {
-    margin-top: 18px;
-    width: 100%;
-    padding: 15px;
-    background: #a855f7;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-.section-title {
-    font-size: 19px;
-    margin-bottom: 14px;
-}
-
-.sneakers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.shoe {
-    background: #1c1b23;
-    border: 1px solid #302b3a;
-    border-radius: 16px;
-    padding: 15px;
-}
-
-.shoe-image {
-    height: 90px;
-    display: grid;
-    place-items: center;
-    font-size: 52px;
-}
-
-.shoe h3 {
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-.shoe p {
-    color: #baff61;
-    font-size: 13px;
-}
-
-.nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #19181f;
-    border-top: 1px solid #34303e;
-    display: flex;
-    justify-content: space-around;
-    padding: 13px 5px;
-    padding-bottom: max(13px, env(safe-area-inset-bottom));
-}
-
-.nav button {
-    background: none;
-    border: none;
-    color: #9995a5;
-    font-size: 11px;
-}
-
-.nav span {
-    display: block;
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.nav button.active {
-    color: #bd75ff;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh;padding:16px 16px calc(100px + env(safe-area-inset-bottom));}
+button{font:inherit;cursor:pointer}
+.app{max-width:620px;margin:0 auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin:4px 0 25px}
+.player{display:flex;align-items:center;gap:11px;min-width:0}
+.avatar{width:47px;height:47px;border-radius:15px;background:linear-gradient(145deg,#292333,#191922);border:1px solid #574174;display:grid;place-items:center;flex:none}
+.avatar svg{width:29px;height:29px}
+.player-name{font-size:14px;font-weight:750;letter-spacing:.1px}
+.player-level{font-size:11px;color:var(--muted);margin-top:4px}
+.balance{display:flex;align-items:center;gap:8px;background:#1c1d25;border:1px solid #30313b;padding:11px 13px;border-radius:14px;color:var(--green);font-size:14px;font-weight:800;white-space:nowrap}
+.coin{width:17px;height:17px;border-radius:50%;background:var(--gold);color:#4b3917;font-size:11px;display:grid;place-items:center}
+.eyebrow{font-size:10px;letter-spacing:2px;color:var(--purple);font-weight:800;margin-bottom:8px}
+h1{font-size:25px;letter-spacing:-.7px;font-weight:850}
+.subtitle{color:var(--muted);font-size:13px;margin-top:7px;line-height:1.45}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:21px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 15px}
+.stat-label{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.stat-value{font-size:22px;font-weight:800;margin-top:7px;letter-spacing:-.4px}
+.stat-note{font-size:10px;color:#777b89;margin-top:3px}
+.shop-hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#272034 0%,#1b1c27 65%,#1b2025 100%);border:1px solid #493663;border-radius:21px;padding:19px;margin-bottom:25px}
+.shop-hero:after{content:"";position:absolute;width:155px;height:155px;border:1px solid #ffffff0c;border-radius:50%;right:-55px;top:-57px;box-shadow:0 0 0 18px #ffffff06,0 0 0 38px #ffffff04}
+.hero-top{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800}
+.hero-mark{width:28px;height:28px;border-radius:9px;background:#3a2a50;display:grid;place-items:center;color:#c5a2ff;font-size:15px}
+.shop-hero p{color:#b7b5c3;font-size:12px;line-height:1.55;margin:9px 0 16px;max-width:390px}
+.primary{width:100%;border:0;border-radius:12px;background:var(--purple);color:#fff;padding:14px 15px;font-size:12px;font-weight:850;letter-spacing:.5px;transition:transform .15s,background .15s}
+.primary:active{transform:scale(.985);background:#8957dc}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 0 13px}
+.section-head h2{font-size:16px;font-weight:800}
+.section-link{font-size:11px;color:#bd9af5;background:none;border:0}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.product{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden;min-width:0}
+.product-art{height:125px;background:radial-gradient(ellipse at 50% 72%,#34313e 0%,#24232d 42%,#1b1c24 75%);display:grid;place-items:center;position:relative}
+.product-art:after{content:"";position:absolute;width:72%;height:14px;border-radius:50%;background:#0007;filter:blur(8px);bottom:20px}
+.product-art svg{width:88%;max-width:180px;height:90px;position:relative;z-index:1;filter:drop-shadow(0 8px 7px #0008)}
+.product-info{padding:12px}
+.product-name{font-size:12px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-meta{font-size:10px;color:var(--muted);margin-top:5px}
+.product-price{font-size:12px;color:var(--green);font-weight:750;margin-top:9px}
+.screen{display:none;animation:fade .18s ease}
+.screen.active{display:block}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+.page-title{font-size:23px;font-weight:850;letter-spacing:-.5px;margin:4px 0 7px}
+.page-sub{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:19px}
+.empty{border:1px dashed #3a3b48;border-radius:17px;padding:25px 18px;text-align:center;background:#171820}
+.empty-symbol{width:48px;height:48px;border-radius:15px;background:#262330;color:#c1a0f4;display:grid;place-items:center;font-size:21px;margin:0 auto 12px}
+.empty h3{font-size:14px;margin-bottom:6px}
+.empty p{font-size:11px;color:var(--muted);line-height:1.5}
+.list-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.list-card strong{font-size:12px;display:block}
+.list-card small{font-size:10px;color:var(--muted);display:block;margin-top:5px}
+.pill{font-size:10px;padding:6px 9px;border-radius:8px;background:#292333;color:#c8a9ff;white-space:nowrap}
+.nav{position:fixed;z-index:5;left:0;right:0;bottom:0;background:#17181f;border-top:1px solid #30313b;padding:9px 4px calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}
+.nav button{border:0;background:none;color:#818492;min-width:0;flex:1;font-size:9px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:3px 0}
+.nav .nav-icon{width:25px;height:23px;display:grid;place-items:center;font-size:19px;line-height:1}
+.nav button.active{color:#c39af9}
+.nav button.active .nav-icon{filter:drop-shadow(0 0 7px #9b69ed55)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#292a34;border:1px solid #444552;color:white;padding:10px 14px;border-radius:12px;font-size:11px;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap;z-index:10}
+.toast.show{opacity:1}
+@media(min-width:520px){body{padding-top:24px}.product-art{height:155px}.product-art svg{height:110px}}
 </style>
 </head>
-
 <body>
-
-<div class="header">
-    <div class="profile">
-        <div class="avatar">👟</div>
-        <div>
-            <b>Мой магазин</b>
-            <div class="level">Уровень 1 · Новичок</div>
-        </div>
+<div class="app">
+  <header class="topbar">
+    <div class="player">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M9 37c8-1 13-7 17-18l8 4 7 12 12 5c4 2 5 7 1 9H15c-7 0-10-5-6-12Z" fill="#8F68D5" stroke="#D8C4FF" stroke-width="2"/><path d="m24 25 10 8m-4-12 10 8m-5-11 9 8" stroke="#F2EAFE" stroke-width="2.5" stroke-linecap="round"/><path d="M10 42c8 3 27 2 45 0" stroke="#B8E879" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div><div class="player-name">Мой магазин</div><div class="player-level">Уровень 1 · Новичок</div></div>
     </div>
-    <div class="money">💰 5 000</div>
+    <div class="balance"><span class="coin">₽</span><span id="balance">5 000</span></div>
+  </header>
+
+  <main>
+    <section class="screen active" id="shop">
+      <div class="eyebrow">ВАША ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+      <h1>SNEAKERS TYCOON</h1>
+      <p class="subtitle">Создай магазин, найди свой стиль и построй sneaker-бизнес с нуля.</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">✦ РЕПУТАЦИЯ</div><div class="stat-value" id="rating">0</div><div class="stat-note">Очки репутации</div></div>
+        <div class="stat"><div class="stat-label">▦ НА СКЛАДЕ</div><div class="stat-value" id="stock-count">0</div><div class="stat-note">Пар кроссовок</div></div>
+      </div>
+      <div class="shop-hero">
+        <div class="hero-top"><span class="hero-mark">01</span> Твой первый магазин</div>
+        <p>Полки пока пусты. Выбери первые модели для продажи — так начнётся развитие твоего бизнеса.</p>
+        <button class="primary" onclick="switchTab('assortment')">ПЕРЕЙТИ К ЗАКУПКАМ <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="section-head"><h2>Модели для старта</h2><button class="section-link" onclick="switchTab('assortment')">Весь каталог →</button></div>
+      <div class="products">
+        <article class="product">
+          <div class="product-art"><svg viewBox="0 0 220 110" fill="none"><path d="M24 65c19-3 33-13 43-35l22 8 23 25 43 9c15 3 28 12 25 20-2 6-12 8-25 8H43C24 100 13 88 24 65Z" fill="#277BAF" stroke="#A8D7F0" stroke-width="3"/><path d="m69 43 24 17m-14-23 25 18m-14-23 24 18" stroke="#F3F4F7" stroke-width="5" stroke-linecap="round"/><path d="M27 78c34 10 105 11 153 4" stroke="#E8EDF2" stroke-width="7" stroke-linecap="round"/><path d="m91 35 15 8-9 12-22-13Z" fill="#172A3B"/></svg></div>
+          <div class="product-info"><div class="product-name">Street Runner</div><div class="product-meta">Повседневные · Универсальные</div><div class="product-price">Закупка: 1 200 монет</div></div>
+        </article>
+        <article class="product">
+          <div class="product-art"><svg viewBox="0 0 220 110" fill="none"><path d="M24 65c19-3 33-13 43-35l22 8 23 25 43 9c15 3 28 12 25 20-2 6-12 8-25 8H43C24 100 13 88 24 65Z" fill="#D8D8D4" stroke="#F4F4EF" stroke-width="3"/><path d="m69 43 24 17m-14-23 25 18m-14-23 24 18" stroke="#555966" stroke-width="5" stroke-linecap="round"/><path d="M27 78c34 10 105 11 153 4" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="m91 35 15 8-9 12-22-13Z" fill="#9B9CA4"/></svg></div>
+          <div class="product-info"><div class="product-name">Urban Classic</div><div class="product-meta">Классика · Городской стиль</div><div class="product-price">Закупка: 1 500 монет</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen" id="assortment">
+      <div class="eyebrow">ПОСТАВКИ И ЗАКУПКИ</div><h1 class="page-title">Ассортимент</h1>
+      <p class="page-sub">Выбирай модели для своего магазина. Каждая закупка уменьшает баланс и пополняет склад.</p>
+      <div class="products">
+        <article class="product"><div class="product-art"><svg viewBox="0 0 220 110" fill="none"><path d="M24 65c19-3 33-13 43-35l22 8 23 25 43 9c15 3 28 12 25 20-2 6-12 8-25 8H43C24 100 13 88 24 65Z" fill="#277BAF" stroke="#A8D7F0" stroke-width="3"/><path d="m69 43 24 17m-14-23 25 18m-14-23 24 18" stroke="white" stroke-width="5" stroke-linecap="round"/><path d="M27 78c34 10 105 11 153 4" stroke="#E8EDF2" stroke-width="7" stroke-linecap="round"/></svg></div><div class="product-info"><div class="product-name">Street Runner</div><div class="product-meta">Повседневные</div><div class="product-price">1 200 монет</div><button class="primary buy" style="margin-top:11px;padding:10px;font-size:10px" data-name="Street Runner" data-price="1200">ЗАКУПИТЬ</button></div></article>
+        <article class="product"><div class="product-art"><svg viewBox="0 0 220 110" fill="none"><path d="M24 65c19-3 33-13 43-35l22 8 23 25 43 9c15 3 28 12 25 20-2 6-12 8-25 8H43C24 100 13 88 24 65Z" fill="#D8D8D4" stroke="#F4F4EF" stroke-width="3"/><path d="m69 43 24 17m-14-23 25 18m-14-23 24 18" stroke="#555966" stroke-width="5" stroke-linecap="round"/><path d="M27 78c34 10 105 11 153 4" stroke="#fff" stroke-width="7" stroke-linecap="round"/></svg></div><div class="product-info"><div class="product-name">Urban Classic</div><div class="product-meta">Городской стиль</div><div class="product-price">1 500 монет</div><button class="primary buy" style="margin-top:11px;padding:10px;font-size:10px" data-name="Urban Classic" data-price="1500">ЗАКУПИТЬ</button></div></article>
+      </div>
+    </section>
+
+    <section class="screen" id="orders">
+      <div class="eyebrow">РАБОТА МАГАЗИНА</div><h1 class="page-title">Заказы</h1><p class="page-sub">Здесь будут появляться покупатели и активные заказы.</p>
+      <div class="empty"><div class="empty-symbol">▤</div><h3>Пока нет заказов</h3><p>Сначала закупи несколько пар кроссовок. Когда появятся покупатели, заказы будут отображаться здесь.</p></div>
+    </section>
+
+    <section class="screen" id="bonuses">
+      <div class="eyebrow">ЕЖЕДНЕВНЫЕ НАГРАДЫ</div><h1 class="page-title">Бонусы</h1><p class="page-sub">Небольшие награды за возвращение в игру.</p>
+      <div class="list-card"><div><strong>Ежедневный бонус</strong><small>Награда за вход в игру</small></div><span class="pill">Скоро</span></div>
+      <div class="list-card"><div><strong>Задания дня</strong><small>Выполняй цели и получай монеты</small></div><span class="pill">Скоро</span></div>
+    </section>
+
+    <section class="screen" id="career">
+      <div class="eyebrow">ТВОЙ ПУТЬ ПРЕДПРИНИМАТЕЛЯ</div><h1 class="page-title">Карьера</h1><p class="page-sub">Развивай магазин, повышай репутацию и открывай новые возможности.</p>
+      <div class="list-card"><div><strong>Уровень 1 · Новичок</strong><small>Начало твоего пути</small></div><span class="pill">Текущий</span></div>
+      <div class="list-card"><div><strong>Следующая цель</strong><small>Продай первые пары кроссовок</small></div><span class="pill">0 / 5</span></div>
+    </section>
+  </main>
 </div>
 
-<h1>SNEAKERS TYCOON</h1>
-<p class="subtitle">Построй свою sneaker-империю!</p>
-
-<div class="stats">
-    <div class="stat">
-        <small>⭐ Рейтинг</small>
-        <h2>0</h2>
-    </div>
-    <div class="stat">
-        <small>📦 Товаров</small>
-        <h2>0</h2>
-    </div>
-</div>
-
-<div class="shop">
-    <h2>🏪 Твой первый магазин</h2>
-    <p>Твой бизнес только начинается. Закупай кроссовки, привлекай покупателей и развивай свой магазин!</p>
-    <button onclick="openTab('Ассортимент')">
-        ОТКРЫТЬ АССОРТИМЕНТ
-    </button>
-</div>
-
-<h2 class="section-title">🔥 Популярные модели</h2>
-[13.11.2026 20:38] ?????: <div class="sneakers">
-    <div class="shoe">
-        <div class="shoe-image">👟</div>
-        <h3>Street Runner</h3>
-        <p>от 1 200 монет</p>
-    </div>
-    <div class="shoe">
-        <div class="shoe-image">👟</div>
-        <h3>Urban Classic</h3>
-        <p>от 1 500 монет</p>
-    </div>
-</div>
-
-<div class="nav">
-    <button class="active" onclick="openTab('Магазин')">
-        <span>🏪</span>Магазин
-    </button>
-    <button onclick="openTab('Ассортимент')">
-        <span>👟</span>Ассортимент
-    </button>
-    <button onclick="openTab('Заказы')">
-        <span>📦</span>Заказы
-    </button>
-    <button onclick="openTab('Рулетка')">
-        <span>🎁</span>Бонусы
-    </button>
-    <button onclick="openTab('Карьера')">
-        <span>🏆</span>Карьера
-    </button>
-</div>
-
+<nav class="nav" aria-label="Основная навигация">
+  <button class="active" data-tab="shop"><span class="nav-icon">⌂</span><span>Магазин</span></button>
+  <button data-tab="assortment"><span class="nav-icon">◈</span><span>Ассортимент</span></button>
+  <button data-tab="orders"><span class="nav-icon">▤</span><span>Заказы</span></button>
+  <button data-tab="bonuses"><span class="nav-icon">✦</span><span>Бонусы</span></button>
+  <button data-tab="career"><span class="nav-icon">♜</span><span>Карьера</span></button>
+</nav>
+<div class="toast" id="toast"></div>
 <script>
-const tg = window.Telegram.WebApp;
+const tg = window.Telegram && window.Telegram.WebApp;
+if (tg) { tg.ready(); tg.expand(); }
 
-tg.ready();
-tg.expand();
-
-function openTab(name) {
-    tg.showAlert(name + ' — скоро будет доступно!');
+let balance = 5000;
+const stock = {};
+function notify(message) {
+  const el = document.getElementById('toast');
+  el.textContent = message;
+  el.classList.add('show');
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
 }
+function switchTab(tab) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === tab));
+  document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav button').forEach(button => {
+  button.addEventListener('click', () => switchTab(button.dataset.tab));
+});
+document.querySelectorAll('.buy').forEach(button => {
+  button.addEventListener('click', () => {
+    const price = Number(button.dataset.price);
+    const name = button.dataset.name;
+    if (balance < price) { notify('Недостаточно монет'); return; }
+    balance -= price;
+    stock[name] = (stock[name] || 0) + 1;
+    document.getElementById('balance').textContent = balance.toLocaleString('ru-RU');
+    document.getElementById('stock-count').textContent = Object.values(stock).reduce((a,b)=>a+b,0);
+    notify(name + ' добавлены на склад');
+  });
+});
 </script>
-
 </body>
 </html>
