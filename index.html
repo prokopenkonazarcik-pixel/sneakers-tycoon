@@ -1,0 +1,274 @@
+[13.11.2026 20:38] ?????: <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sneakers Tycoon</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #101014;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 18px;
+    padding-bottom: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: #292333;
+    border: 2px solid #a855f7;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+}
+
+.level {
+    color: #b9a1d5;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.money {
+    background: #202027;
+    padding: 12px;
+    border-radius: 12px;
+    color: #baff61;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: #9995a5;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.stat {
+    background: #1c1b23;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #302b3a;
+}
+
+.stat small {
+    color: #9995a5;
+}
+
+.stat h2 {
+    margin-top: 8px;
+    font-size: 21px;
+}
+
+.shop {
+    background: linear-gradient(135deg, #42216b, #211b36);
+    border: 1px solid #7540a8;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 22px;
+}
+
+.shop h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.shop p {
+    color: #d1c3e1;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.shop button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 15px;
+    background: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.section-title {
+    font-size: 19px;
+    margin-bottom: 14px;
+}
+
+.sneakers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.shoe {
+    background: #1c1b23;
+    border: 1px solid #302b3a;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.shoe-image {
+    height: 90px;
+    display: grid;
+    place-items: center;
+    font-size: 52px;
+}
+
+.shoe h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.shoe p {
+    color: #baff61;
+    font-size: 13px;
+}
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #19181f;
+    border-top: 1px solid #34303e;
+    display: flex;
+    justify-content: space-around;
+    padding: 13px 5px;
+    padding-bottom: max(13px, env(safe-area-inset-bottom));
+}
+
+.nav button {
+    background: none;
+    border: none;
+    color: #9995a5;
+    font-size: 11px;
+}
+
+.nav span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.nav button.active {
+    color: #bd75ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="profile">
+        <div class="avatar">👟</div>
+        <div>
+            <b>Мой магазин</b>
+            <div class="level">Уровень 1 · Новичок</div>
+        </div>
+    </div>
+    <div class="money">💰 5 000</div>
+</div>
+
+<h1>SNEAKERS TYCOON</h1>
+<p class="subtitle">Построй свою sneaker-империю!</p>
+
+<div class="stats">
+    <div class="stat">
+        <small>⭐ Рейтинг</small>
+        <h2>0</h2>
+    </div>
+    <div class="stat">
+        <small>📦 Товаров</small>
+        <h2>0</h2>
+    </div>
+</div>
+
+<div class="shop">
+    <h2>🏪 Твой первый магазин</h2>
+    <p>Твой бизнес только начинается. Закупай кроссовки, привлекай покупателей и развивай свой магазин!</p>
+    <button onclick="openTab('Ассортимент')">
+        ОТКРЫТЬ АССОРТИМЕНТ
+    </button>
+</div>
+
+<h2 class="section-title">🔥 Популярные модели</h2>
+[13.11.2026 20:38] ?????: <div class="sneakers">
+    <div class="shoe">
+        <div class="shoe-image">👟</div>
+        <h3>Street Runner</h3>
+        <p>от 1 200 монет</p>
+    </div>
+    <div class="shoe">
+        <div class="shoe-image">👟</div>
+        <h3>Urban Classic</h3>
+        <p>от 1 500 монет</p>
+    </div>
+</div>
+
+<div class="nav">
+    <button class="active" onclick="openTab('Магазин')">
+        <span>🏪</span>Магазин
+    </button>
+    <button onclick="openTab('Ассортимент')">
+        <span>👟</span>Ассортимент
+    </button>
+    <button onclick="openTab('Заказы')">
+        <span>📦</span>Заказы
+    </button>
+    <button onclick="openTab('Рулетка')">
+        <span>🎁</span>Бонусы
+    </button>
+    <button onclick="openTab('Карьера')">
+        <span>🏆</span>Карьера
+    </button>
+</div>
+
+<script>
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+tg.expand();
+
+function openTab(name) {
+    tg.showAlert(name + ' — скоро будет доступно!');
+}
+</script>
+
+</body>
+</html>
